@@ -9,7 +9,10 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
 		$scope.create = function() {
 			// Create new Temperature object
 			var temperature = new Temperatures ({
-				name: this.name
+				name     : this.name,
+        recorded : this.recorded,
+        feeling  : this.feeling,
+        meemo    : this.memo
 			});
 
 			// Redirect after save
