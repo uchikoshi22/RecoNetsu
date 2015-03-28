@@ -23,6 +23,7 @@ var TemperatureSchema = new Schema({
   feeling: {
     type: String,
     default: '',
+    trim: false
   },
   memo: {
     type: String,

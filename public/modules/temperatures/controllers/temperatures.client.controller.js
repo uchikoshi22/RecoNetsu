@@ -5,13 +5,24 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
 	function($scope, $stateParams, $location, Authentication, Temperatures) {
 		$scope.authentication = Authentication;
 
+    // Choices of feelings
+    $scope.feelingChoices = [
+      {value: '1', label: '★'},
+      {value: '2', label: '★★'},
+      {value: '3', label: '★★★'},
+      {value: '4', label: '★★★★'},
+      {value: '5', label: '★★★★★'}
+    ];
+
+    $scope.feeling = $scope.feelingChoices[2];
+
 		// Create new Temperature
 		$scope.create = function() {
 			// Create new Temperature object
 			var temperature = new Temperatures ({
 				temperature : this.temperature,
         recorded    : this.recorded,
-        feeling     : this.feeling,
+        feeling     : this.feeling.value,
         meemo       : this.memo
 			});
 

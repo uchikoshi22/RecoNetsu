@@ -28,12 +28,11 @@
 
           <label class="control-label" for="feeling">調子</label>
           <div class="controls">
-            <select class="form-control" data-ng-model="feeling">
-              <option value="1">★</option>
-              <option value="2">★★</option>
-              <option value="3" selected>★★★</option>
-              <option value="4">★★★★</option>
-              <option value="5">★★★★★</option>
+            
+            <select class="form-control"
+                    data-ng-model="feeling"  
+                    ng-options="f as f.label for f in feelingChoices"
+                    >
             </select>
           </div>
 
