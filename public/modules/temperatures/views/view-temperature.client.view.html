@@ -1,20 +1,49 @@
 <section data-ng-controller="TemperaturesController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="temperature.name"></h1>
-	</div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == temperature.user._id))">
-		<a class="btn btn-primary" href="/#!/temperatures/{{temperature._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
+	<!-- <div class="page&#45;header"> -->
+  <!--   <h1>{{temperature.temperature}}度</h1> -->
+	<!-- </div> -->
+	<!-- <div class="pull&#45;right" data&#45;ng&#45;show="((authentication.user) &#38;&#38; (authentication.user._id == temperature.user._id))"> -->
+	<!-- 	<a class="btn btn&#45;primary" href="/#!/temperatures/{{temperature._id}}/edit"> -->
+	<!-- 		<i class="glyphicon glyphicon&#45;edit"></i> -->
+	<!-- 	</a> -->
+	<!-- 	<a class="btn btn&#45;primary" data&#45;ng&#45;click="remove();"> -->
+	<!-- 		<i class="glyphicon glyphicon&#45;trash"></i> -->
+	<!-- 	</a> -->
+	<!-- </div> -->
+
+  <table class="table">
+    <tr>
+      <th>検温結果</th>
+      <td>{{temperature.temperature}}度</td>
+    </tr>
+    <tr>
+      <th>調子</th>
+      <td>{{feelingChoices[temperature.feeling].label}}</td>
+    </tr>
+    <tr>
+      <th>検温時間</th>
+      <td>{{temperature.recorded | date:'medium'}}</td>
+    </tr>
+    <tr>
+      <th>メモ</th>
+      <td>{{temperature.memo}}</td>
+    </tr>
+  </table>
+
+    <div data-ng-show="((authentication.user) && (authentication.user._id == temperature.user._id))">
+      <a class="btn btn-primary" href="/#!/temperatures/{{temperature._id}}/edit">
+        <i class="glyphicon glyphicon-edit"></i>
+      </a>
+      <a class="btn btn-primary" data-ng-click="remove();">
+        <i class="glyphicon glyphicon-trash"></i>
+      </a>
+    </div>
+  
 	<small>
 		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="temperature.created | date:'mediumDate'"></span>
-			by
+      <!-- 検温時間 -->
+			<!-- <span data&#45;ng&#45;bind="temperature.created | date:'mediumDate'"></span> -->
+			Saved by
 			<span data-ng-bind="temperature.user.displayName"></span>
 		</em>
 	</small>
