@@ -7,11 +7,11 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
 
     // Choices of feelings
     $scope.feelingChoices = [
-      {value: '1', label: '★'},
-      {value: '2', label: '★★'},
-      {value: '3', label: '★★★'},
-      {value: '4', label: '★★★★'},
-      {value: '5', label: '★★★★★'}
+      {value: '0', label: '★'},
+      {value: '1', label: '★★'},
+      {value: '2', label: '★★★'},
+      {value: '3', label: '★★★★'},
+      {value: '4', label: '★★★★★'}
     ];
 
     $scope.feeling = $scope.feelingChoices[2];
@@ -21,9 +21,10 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
 			// Create new Temperature object
 			var temperature = new Temperatures ({
 				temperature : this.temperature,
-        recorded    : this.recorded,
+        // recorded    : this.recorded,
+        recorded    : this.data.dateDropDownInput,
         feeling     : this.feeling.value,
-        meemo       : this.memo
+        memo       : this.memo
 			});
 
 			// Redirect after save
@@ -69,6 +70,9 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
 		$scope.find = function() {
 			$scope.temperatures = Temperatures.query();
 		};
+
+    // Find a label of feeling of Temperatures
+    // $scope.feelingLabel = $scope.feelingChoices[$scope.temperature.feeling];
 
 		// Find existing Temperature
 		$scope.findOne = function() {
