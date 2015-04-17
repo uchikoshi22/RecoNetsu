@@ -3,18 +3,15 @@
     <h1>検温結果一覧</h1>
   </div>
   <div class="list-group">
-    <a data-ng-repeat="temperature in temperatures | orderBy:'-temperature.recorded'" data-ng-href="#!/temperatures/{{temperature._id}}" class="list-group-item">
+    <a data-ng-repeat="temperature in temperatures | orderBy:'-temperature.recorded'" ng-if="temperature.user._id == authentication.user._id" data-ng-href="#!/temperatures/{{temperature._id}}" class="list-group-item">
       <small class="list-group-item-text">
-			  検温時間
+        検温時間
         <span data-ng-bind="temperature.recorded | date: 'medium'"></span>
-				by
-			  <span data-ng-bind="temperature.user.displayName"></span>
-			</small>
-      <!-- <h4 class="list&#45;group&#45;item&#45;heading" data&#45;ng&#45;bind="temperature.temperature"></h4> -->
-      <!-- <h5 class="list&#45;group&#45;item&#45;heading" data&#45;ng&#45;bind="feelingChoices[temperature.feeling].label"> -->
-      </h5>
-        <h4 class="list-group-item-heading">{{temperature.temperature}}度 {{feelingChoices[temperature.feeling].label}}</h4>
-        <h5 class="list-group-item-heading">{{temperature.memo}}</h5>
+        by
+        <span data-ng-bind="temperature.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading">{{temperature.temperature}}度 {{feelingChoices[temperature.feeling].label}}</h4>
+      <h5 class="list-group-item-heading">{{temperature.memo}}</h5>
     </a>
   </div>
   <div class="alert alert-warning text-center" data-ng-hide="!temperatures.$resolved || temperatures.length">

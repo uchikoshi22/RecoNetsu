@@ -1,16 +1,4 @@
 <section data-ng-controller="TemperaturesController" data-ng-init="findOne()">
-	<!-- <div class="page&#45;header"> -->
-  <!--   <h1>{{temperature.temperature}}度</h1> -->
-	<!-- </div> -->
-	<!-- <div class="pull&#45;right" data&#45;ng&#45;show="((authentication.user) &#38;&#38; (authentication.user._id == temperature.user._id))"> -->
-	<!-- 	<a class="btn btn&#45;primary" href="/#!/temperatures/{{temperature._id}}/edit"> -->
-	<!-- 		<i class="glyphicon glyphicon&#45;edit"></i> -->
-	<!-- 	</a> -->
-	<!-- 	<a class="btn btn&#45;primary" data&#45;ng&#45;click="remove();"> -->
-	<!-- 		<i class="glyphicon glyphicon&#45;trash"></i> -->
-	<!-- 	</a> -->
-	<!-- </div> -->
-
   <table class="table">
     <tr>
       <th>検温結果</th>
@@ -30,21 +18,20 @@
     </tr>
   </table>
 
-    <div data-ng-show="((authentication.user) && (authentication.user._id == temperature.user._id))">
-      <a class="btn btn-primary" href="/#!/temperatures/{{temperature._id}}/edit">
-        <i class="glyphicon glyphicon-edit"></i>
-      </a>
-      <a class="btn btn-primary" data-ng-click="remove();">
-        <i class="glyphicon glyphicon-trash"></i>
-      </a>
-    </div>
-  
-	<small>
-		<em class="text-muted">
-      <!-- 検温時間 -->
-			<!-- <span data&#45;ng&#45;bind="temperature.created | date:'mediumDate'"></span> -->
-			Saved by
-			<span data-ng-bind="temperature.user.displayName"></span>
-		</em>
-	</small>
+  <div data-ng-show="((authentication.user) && (authentication.user._id == temperature.user._id))">
+    <a class="btn btn-primary" href="/#!/temperatures/{{temperature._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+
+  <small>
+    <em class="text-muted">
+    Saved by
+      <span data-ng-bind="temperature.user.displayName"></span>
+    </em>
+  </small>
+
 </section>
