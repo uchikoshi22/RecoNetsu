@@ -16,11 +16,11 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
 
     $scope.feeling = $scope.feelingChoices[2];
 
-		// Create new Temperature
-		$scope.create = function() {
+    // Create new Temperature
+    $scope.create = function() {
 			// Create new Temperature object
-			var temperature = new Temperatures ({
-				temperature : this.temperature,
+      var temperature = new Temperatures ({
+        temperature : this.temperature,
         // recorded    : this.recorded,
         recorded    : this.data.dateDropDownInput,
         feeling     : this.feeling.value,
@@ -56,8 +56,10 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
 		};
 
 		// Update existing Temperature
-		$scope.update = function() {
-			var temperature = $scope.temperature;
+    $scope.update = function() {
+      var temperature = $scope.temperature;
+      temperature.recorded = this.data.dateDropDownInput;
+      temperature.feeling = this.f.value;
 
 			temperature.$update(function() {
 				$location.path('temperatures/' + temperature._id);
@@ -75,7 +77,8 @@ angular.module('temperatures').controller('TemperaturesController', ['$scope', '
     // $scope.feelingLabel = $scope.feelingChoices[$scope.temperature.feeling];
 
 		// Find existing Temperature
-		$scope.findOne = function() {
+
+    $scope.findOne = function() {
 			$scope.temperature = Temperatures.get({ 
 				temperatureId: $stateParams.temperatureId
 			});
